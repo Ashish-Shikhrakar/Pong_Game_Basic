@@ -100,11 +100,46 @@ function collision(b,p){
     return b.right > p.left && b.bottom > p.top && b.left < p.right && b.top < p.bottom;
 }
 
+function togglePause()
+{
+    if (!paused){
+        paused = true;
+    } else if (paused){
+       paused= false;
+    }
+
+}
+
+window.addEventListener('keydown', function (e) {
+    var key = e.keyCode;
+    if (key === 80)// p key
+    {
+        togglePause();
+    }
+    });
+
+window.addEventListener('keydown', movePaddle);
 canvas.addEventListener('mousemove', movePaddle);
 
 function movePaddle(event){
     let rect = canvas.getBoundingClientRect();//returns size of element and position relative to viewport so that we can take into account scrolling and border
-    user.y = event.clientY - rect.top - user.height / 2;
+    if(!paused){
+        user.y = event.clientY - rect.top - user.height / 2;
+        //use keyboard to control left player
+        // var press = event.keyCode;
+
+        // if(((press === 87) || (press === 38))){
+        //     if(user.y > -50){
+        //         user.y -= 27;
+        //     }
+        // }
+        // if((press === 83) || (press === 40)){
+        //     if(user.y < canvas.height-50){
+        //         user.y += 27;
+        //     }
+        // }
+    }
+    
 }
 
 let paused = false;
@@ -124,7 +159,7 @@ function update(){
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
 
-    let computerlevel = 0.08;
+    let computerlevel = 0.1;
     com.y += ((ball.y - (com.y + com.height / 2))) * computerlevel;
 
     if (ball.y+ball.radius > canvas.height || ball.y - ball.radius < 0){
@@ -157,11 +192,13 @@ function update(){
 }
 const fps = 50;
 let gamestate = false;
+let end_text = null;
 document.getElementById("start").addEventListener("click",function(){
     clearInterval(game);
     resetBall();
     gamestate = true;
     paused = false;
+    canvas.style.display = "block";
 })
 
 function game(){
@@ -173,7 +210,13 @@ function game(){
     }
     if (user.score === 5 || com.score === 5){
         resetBall();
-        drawtext("GAME OVER", canvas.width /2 - 125, canvas.height - 50, 'white');
+        if(user.score === 5){
+            end_text = "YOU WIN";
+        }
+        else{
+            end_text = "GAME OVER";
+        }
+        drawtext(end_text, canvas.width /2 - 110, canvas.height - 50, 'white');
         
         user.score = 0;
         com.score = 0;

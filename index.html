@@ -22,12 +22,54 @@
         position: fixed;
         width: 100%;
     }
+    #rules{
+        align-self: baseline;
+        width: 500px;
+        height: auto;
+        text-align: left;
+        padding-left: 200px;
+        position: inherit;
+    }
+    #start{
+        width: 100px;
+        height: 50px;
+        margin: 10px;
+        font-size: 22px;
+        border-radius: .25rem;
+        align-items: center;
+        background-clip: padding-box;
+        background-color: #ffc233;
+        border: 1px solid transparent;
+        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+
+    #start:hover{
+        background-color: #fb8332;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+        transition: 0.4s;
+    }
+
+
 </style>
 <body>
     <h1>Pong Game</h1>
-    <button id="start">Play</button>
-    <canvas id="pong" width="600" height="400"></canvas>
-    <p>Control the left player by using up and down arrow keys</p>
+    <div id="rules">
+        <h2>Game Information</h2>
+        <ul>
+            <li>Press Play to start the game</li>
+            <li>Control the left player by using the <br>mouse to move up or down</li>
+            <li>Press P to pause or unpause the game</li>
+            <li>You win after you score 5 points</li>
+        </ul>
+    </div>
+    <div>
+        <button id="start" name="button">Play</button>
+        <canvas id="pong" width="600" height="400" style="display: none;"></canvas>
+        <p>Control the left player by using the mouse</p>
+    </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
