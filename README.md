@@ -1,5 +1,7 @@
 # Pong Game
 
+Demo: [Play Game](https://ashish-shikhrakar.github.io/Pong_Game_Basic/)
+
 Pong Game made using JavaScript canvas
 
 - Play against a CPU using mouse to move the paddle up or down
