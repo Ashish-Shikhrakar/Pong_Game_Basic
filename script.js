@@ -67,25 +67,24 @@ function drawtext(text, x, y, color) {
     ctx.fillText(text, x, y);
 }
 
-let rectX = 0;//x coordinate of rectangle
-
+//function to draw net on the middle
 function drawNet() {
     for (let i = 0; i <= canvas.height; i += 15) {
         drawrect(net.x, net.y + i, net.width, net.height, net.color);
     }
 }
 
-
+//resets ball speed and position
 function resetBall(){
     ball.x = canvas.width / 2;
     ball.y = canvas.height / 2;
 
     ball.speed = 8;
-    ball.velocityX = -ball.velocityX;
+    ball.velocityX = -ball.velocityX;//next turn to winner
 }
 
 
-
+//check for collisions
 function collision(b,p){
     b.top = b.y - b.radius;
     b.bottom = b.y + b.radius;
@@ -118,13 +117,13 @@ window.addEventListener('keydown', function (e) {
     }
     });
 
-window.addEventListener('keydown', movePaddle);
-canvas.addEventListener('mousemove', movePaddle);
+//window.addEventListener('keydown', movePaddle);
+canvas.addEventListener('mousemove', movePaddle);//mouse movement in canvas
 
 function movePaddle(event){
     let rect = canvas.getBoundingClientRect();//returns size of element and position relative to viewport so that we can take into account scrolling and border
     if(!paused){
-        user.y = event.clientY - rect.top - user.height / 2;
+        user.y = event.clientY - rect.top - user.height / 2;//align paddle to mouse position
         //use keyboard to control left player
         // var press = event.keyCode;
 
@@ -155,6 +154,7 @@ function render() {
     drawcircle(ball.x, ball.y, ball.radius, ball.color);
 }
 
+//game code
 function update(){
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
@@ -190,9 +190,12 @@ function update(){
         resetBall();
     }
 }
+
 const fps = 50;
 let gamestate = false;
 let end_text = null;
+
+//start on play button press
 document.getElementById("start").addEventListener("click",function(){
     clearInterval(game);
     resetBall();
@@ -201,6 +204,7 @@ document.getElementById("start").addEventListener("click",function(){
     canvas.style.display = "block";
 })
 
+//game loop
 function game(){
     if ((gamestate)){
         if((!paused)){
