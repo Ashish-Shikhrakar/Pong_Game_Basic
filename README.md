@@ -11,6 +11,7 @@ To play the game use the [github link](https://ashish-shikhrakar.github.io/Pong_
     -Play against a CPU using the mouse to move the paddle up or down
     -Hit the ball to make CPU miss the ball to score a point
     -Score 5 points to Win
+    -Press p to pause or play
 
 ## Contributing
 
