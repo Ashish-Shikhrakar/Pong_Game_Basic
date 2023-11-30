@@ -196,14 +196,14 @@ let gamestate = false;
 let end_text = null;
 
 //start on play button press
-document.getElementById("start").addEventListener("click",function(){
+document.getElementById("start").addEventListener("click", function() {
     clearInterval(game);
     resetBall();
     gamestate = true;
     paused = false;
-    document.getElementById("rules").style.paddingleft = 130
+    document.getElementById("rules").style.paddingLeft = "100px";
     canvas.style.display = "block";
-})
+});
 
 //game loop
 function game(){
