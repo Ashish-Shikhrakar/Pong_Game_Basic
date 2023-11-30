@@ -1,12 +1,6 @@
 # Pong Game
 
-<<<<<<< HEAD
-Demo: [Play Game](https://ashish-shikhrakar.github.io/Pong_Game_Basic/)
-
-Pong Game made using JavaScript canvas
-=======
 Pong Game is a basic javascript game played against AI
->>>>>>> 93f4d0d41c88973bf88fef72abd18f221b9a9296
 
 ## Play
 
