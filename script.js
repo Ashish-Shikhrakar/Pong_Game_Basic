@@ -201,6 +201,7 @@ document.getElementById("start").addEventListener("click",function(){
     resetBall();
     gamestate = true;
     paused = false;
+    document.getElementById("rules").style.paddingleft = 130
     canvas.style.display = "block";
 })
 
