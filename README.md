@@ -1,7 +1,5 @@
 # Pong Game
 
-Demo: [Play Game](https://ashish-shikhrakar.github.io/Pong_Game_Basic/)
-
 Pong Game is a basic javascript game played against AI
 
 ## Play
